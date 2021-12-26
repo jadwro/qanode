@@ -1,0 +1,409 @@
+.tag_menu {
+  position: relative;
+  margin: auto;
+  margin-top: 10px;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 1001;
+}
+
+.menu-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  position: relative;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0px;
+  margin: 1rem;
+  width: 150px;
+  max-width: 150px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+.menu-item a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.menu-item:hover {
+  background-color: transparent;
+}
+
+.menu-item:hover a {
+  color: white;
+  font-weight: 400;
+}
+
+.menu-item:hover {
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.menu-item:hover .submenu-item {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+  opacity: 1;
+}
+
+.menu-item:hover .main-menu-title {
+  border-radius: 15px;
+}
+
+.menu-item:hover .main-menu-title::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.menu-item.underline:hover .main-menu-title::after {
+  opacity: 1;
+}
+
+.main-menu-title {
+  position: relative;
+  width: 100%;
+  border: 1px solid black;
+  -webkit-transition: 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+  padding: 5px;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 900;
+}
+
+.main-menu-title::before {
+  content: "";
+  position: absolute;
+  height: 101%;
+  width: 101%;
+  top: 0%;
+  left: 0%;
+  background-color: darkgreen;
+  border-radius: 15px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+  z-index: -1;
+}
+
+.main-menu-title::after {
+  pointer-events: none;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: red;
+  display: block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 130%;
+  opacity: 0;
+  border-radius: 15px;
+  -webkit-transition: 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+}
+
+.submenu-container {
+  position: absolute;
+  top: 100%;
+  width: 101%;
+  overflow: hidden;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+
+.submenu-item {
+  border: 1px solid black;
+  text-align: left;
+  margin-top: 7px;
+  padding: 0.7rem;
+  -webkit-transition: 400ms ease;
+  transition: 400ms ease;
+  opacity: 0;
+  background-color: #65e965;
+  -webkit-transform: scaleY(0) translateY(-80px);
+          transform: scaleY(0) translateY(-80px);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+}
+
+.submenu-item ul {
+  padding-left: 10px;
+}
+
+.submenu-container2 {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.submenu-item2 {
+  display: none;
+  background-color: #65e965;
+  position: relative;
+  top: 10px;
+  border: 1px solid black;
+}
+
+.submenu-item2 ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.submenu-item2 ul li {
+  padding: 10px 10px;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4rem;
+  height: 100vh;
+  background-color: rgba(224, 224, 224, 0.9);
+  border-right: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: 300ms linear;
+  transition: 300ms linear;
+  z-index: 9999;
+  overflow-x: hidden;
+}
+
+.changed.side-menu {
+  width: 15rem;
+}
+
+.changed.side-menu .arrows {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.arrow {
+  border-bottom: 1px solid green;
+  height: 2rem;
+  margin-top: 1rem;
+  padding-bottom: 3rem;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrows {
+  font-size: 2rem;
+  color: green;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.side-menu-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 15rem;
+}
+
+.side-menu-item {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid black;
+}
+
+.side-menu-item i {
+  font-size: 2rem;
+  color: green;
+}
+
+.side-menu-item:hover {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.side-menu-item:hover .fa-cog, .side-menu-item:hover .fa-baseball-ball, .side-menu-item:hover .fa-flushed {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.side-menu-item:hover .fa-frog {
+  -webkit-animation: zaba 500ms infinite;
+          animation: zaba 500ms infinite;
+}
+
+.side-menu-item:hover .fa-fighter-jet {
+  -webkit-animation: samolot 500ms;
+          animation: samolot 500ms;
+}
+
+.side-menu-text {
+  width: 100%;
+  text-align: center;
+}
+
+@-webkit-keyframes zaba {
+  0% {
+    -webkit-transform: translateY(20%);
+            transform: translateY(20%);
+  }
+  50% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  100% {
+    -webkit-transform: translateY(20%);
+            transform: translateY(20%);
+  }
+}
+
+@keyframes zaba {
+  0% {
+    -webkit-transform: translateY(20%);
+            transform: translateY(20%);
+  }
+  50% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  100% {
+    -webkit-transform: translateY(20%);
+            transform: translateY(20%);
+  }
+}
+
+@-webkit-keyframes samolot {
+  0% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    opacity: 1;
+  }
+  10% {
+    -webkit-transform: translateX(25%);
+            transform: translateX(25%);
+    opacity: 1;
+  }
+  20% {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+    opacity: 1;
+  }
+  30% {
+    -webkit-transform: translateX(75%);
+            transform: translateX(75%);
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: translateX(-200%);
+            transform: translateX(-200%);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes samolot {
+  0% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    opacity: 1;
+  }
+  10% {
+    -webkit-transform: translateX(25%);
+            transform: translateX(25%);
+    opacity: 1;
+  }
+  20% {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+    opacity: 1;
+  }
+  30% {
+    -webkit-transform: translateX(75%);
+            transform: translateX(75%);
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: translateX(-200%);
+            transform: translateX(-200%);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+/*# sourceMappingURL=menu.css.map */

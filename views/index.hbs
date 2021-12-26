@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Team</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+<nav class="side-menu">
+       <div class="arrow">
+           <p class="arrows">>></p>
+       </div>
+       <ul class="side-menu-list">
+           <li class="side-menu-item"><i class="fas fa-baseball-ball"></i> <p class="side-menu-text">Tekst menu</p></li>
+           <li class="side-menu-item"><i class="fas fa-cog"></i> <p class="side-menu-text">Tekst menu</p></li>
+           <li class="side-menu-item"><i class="fas fa-fighter-jet"></i> <p class="side-menu-text">Tekst menu</p></li>
+           <li class="side-menu-item"><i class="far fa-flushed"></i> <p class="side-menu-text">Tekst menu</p></li>
+           <li class="side-menu-item"><i class="fas fa-frog"></i> <p class="side-menu-text">Tekst menu</p></li>
+        </ul>
+</nav>
+
+<main class="main">
+        <header>
+            <div class="naglowek">
+                <div class="logo_title">
+                    <div class="logo_img">
+                        <img src="img/itm.svg" alt="Logo Śląska" class="logo_slask">
+                    </div>
+                    <div class="tytuldiv">
+                        <h2 class="tytul"></h2>
+                        <div class="kreski">
+                            <div class="line1">I</div>
+                            <div class="line2">T</div>
+                            <div class="line3">M</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social">
+                    <p><a href="#"><i class="fab fa-facebook"></i></a></p>
+                    <p><a href="#"><i class="fab fa-github"></i></a></p>
+                    <p><a href="#"><i class="fab fa-instagram"></i></a></p>
+                </div>
+            </div>
+        </header>
+
+        <nav class="tag_menu">
+            <div class="menu-container">
+                <div class="menu-item underline">
+                    <a href="#slownik" class="link_menu">
+                        <div class="main-menu-title">
+                            Słownik
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="#2" class="link_menu">
+                        <div class="main-menu-title">
+                            Menu 1
+                        </div>
+                    </a>
+                    <div class="submenu-container">
+                        <div class="submenu-item">
+                            <ul>
+                                <li>Item 1</li>
+                                <li>Item 1</li>
+                                <li>Item 1</li>
+                                <li>Item 1</li>
+                                <li>Item 1</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>                
+                <div class="menu-item underline">
+                    <a href="#3" class="link_menu">
+                        <div class="main-menu-title underline">
+                            Menu 3
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item underline">
+                    <a href="#4" class="link_menu">
+                        <div class="main-menu-title underline">
+                            Menu 4
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="grey">
+            <div class="grid-photo">
+                <div class="photo item1">
+                    <a href="#" target="_blank">
+                    <div class="img-container">
+                        <img src="img/1.png" alt="1">
+                    </div>
+                    <div class="photo-text item1">
+                        <h2>Aplikacja Klienta</h2>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae deserunt soluta natus quibusdam
+                            blanditiis
+                            eaque sit nam accusamus minus vitae.</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="photo item2">
+                    <div class="img-container">
+                        <img src="../img/2.png" alt="1">
+                    </div>
+                    <div class="photo-text item2">
+                        <h2>Aplikacja Wew.</h2>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae deserunt soluta natus quibusdam
+                            blanditiis
+                            eaque sit nam accusamus minus vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                    </div>
+                </div>
+                <div class="photo item3">
+                    <div class="img-container">
+                        <img src="img/3.jpg" alt="1">
+                    </div>
+                    <div class="photo-text item3">
+                        <h2>Wpłaty</h2>
+                        <p>Symulacja wpłat od klienta</p>
+                    </div>
+                </div>
+                <div class="photo item4">
+                    <div class="img-container">
+                        <img src="img/4.jpg" alt="1">
+                    </div>
+                    <div class="photo-text item4">
+                        <h2>Księgowanie</h2>
+                        <p>Symulacja księgowania</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slownik">
+                <div class="slownik-nagl" id="slownik">
+                    <h1>Słowniczek</h1>
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="slownik-siatka">                   
+                </div>
+                <div class="popupAdd hideAdd">
+                    <div class="slownik-dodaj">
+                        <h1>Dodaj nowe pojęcie</h1>
+                        <form class="form-dodaj">
+                            <label for="tytul">Podaj tytuł</label>
+                            <input type="text" id="tytul" name="tytul" placeholder="Tytuł">
+                            <label for="autor">Autor (opcjonalnie)</label>
+                            <input type="text" id="autor" name="autor" placeholder="Autor">
+                            <label for="dzial">Jaki dział?</label>
+                            <select id="dzial" name="dzial">
+                                <option value="Ogólne skróty IT">Ogólne skróty IT</option>
+                                <option value="Pojęcia z IT">Pojęcia z IT</option>
+                                <option value="Ogólne skróty N.G">Ogólne skróty N.G</option>
+                                <option value="Różności" selected>Różności</option>
+                            </select>
+                            <label for="tresc">Wpisz treść</label>
+                            <textarea rows="5" name="tresc"></textarea>
+                            <button class="guzik">Dodaj</button>
+                        </form>
+                    </div>     
+                </div>
+                <div class="popupEdit hideEdit">
+                    <div class="slownik-edytuj">
+                        <h1>Edycja pojęcia</h1>
+                        <form class="form-edit">
+                            <label for="tytul">Podaj tytuł</label>
+                            <input type="text" id="tytul" name="tytul" placeholder="Tytuł">
+                            <label for="autor">Autor (opcjonalnie)</label>
+                            <input type="text" id="autor" name="autor" placeholder="Autor">
+                            <select id="dzial" name="dzial">
+                                <option value="Ogólne skróty IT">Ogólne skróty IT</option>
+                                <option value="Pojęcia z IT">Pojęcia z IT</option>
+                                <option value="Ogólne skróty N.G">Ogólne skróty N.G</option>
+                                <option value="Różności" selected>Różności</option>
+                            </select>                        
+                            <label for="tresc">Wpisz treść</label>
+                            <textarea rows="5" name="tresc"></textarea>
+                            <button class="guzik">Edytuj</button>
+                        </form>
+                    </div>     
+                </div>
+                <div class="popupConfirm hideConfirm">
+                    <div class="slownik-confirm">
+                        <h1>Na pewno usunąć?</h1>
+                        <form class="form-confirm">           
+                            <button class="guzik btnYes">TAK</button>                 
+                            <button class="guzik btnNo">NIE</button>
+                        </form>
+                    </div>     
+                </div>
+            </div>
+        </div>    
+    </main>
+
+    <footer>
+
+    </footer>
+
+
+<!-- Firebase DB import -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+    firebase.initializeApp({
+        apiKey: 'AIzaSyCfpDeogC5Tz1onPNKHZr07WbPk3ZatB7U',
+        authDomain: 'jadwro-19661.firebaseapp.com',
+        projectId: 'jadwro-19661'
+    });
+    </script>
+<!-- End of Firebase DB import -->
+
+    <script src="https://kit.fontawesome.com/c1aa217e9d.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

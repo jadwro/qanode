@@ -1,0 +1,36 @@
+@media only screen and (max-width: 740px) {   
+    .menu-container {
+        display: none;
+    }
+    .side-menu {
+        bottom: 0;
+        top: auto;
+        width: 100vw;
+        height: 4rem;
+
+        &:hover {
+            height: 15rem;
+            width: 100vw;
+        }
+    }
+    .main {
+        margin-left: 0px;
+    }
+}
+
+@media only screen and (max-width: 600px) { 
+    body {
+        background-position: center;
+    }
+    .tytul {
+        font-size: 2rem;
+    }
+
+    .line3 {
+        margin-right: 5px;
+    }
+
+    .image {
+        width: 8rem;
+    }
+} 

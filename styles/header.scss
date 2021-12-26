@@ -1,0 +1,176 @@
+@import 'var';
+
+.naglowek {
+    // background-color: green;
+    width: 95%;
+    max-width: $siteMaxWidth;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    position: relative;
+}
+
+.logo_title {
+    width: 100%;
+    // background-color: chartreuse;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+}
+
+.logo_title:hover .tytuldiv::before {
+    width: 100%;
+    right: auto;
+    left: 0%;
+}
+
+.logo_slask {
+    width: 280px;
+    margin-bottom: 2rem;
+    filter: blur(1.5px);
+    transition: 250ms linear;
+    // height: 75px;
+}
+
+.logo_slask:hover {
+    filter: none;
+}
+
+.tytul {
+    position: relative;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+    font-family: 'Brygada 1918', serif;
+    font-size: 3.5rem;
+    margin-bottom: 4px;
+    // background-color: blueviolet;
+}
+
+.tytuldiv {
+    position: relative;
+    display: block;
+    margin: 0 3vw;
+    // background-color: red;
+}
+
+.tytuldiv::before {
+    content: '';
+    width: 0%;
+    height: 1px;
+    background-image: linear-gradient(to right, darkgreen , white, red);
+    position: absolute;
+    top: -10%;
+    right: 0px;
+    transition: all 0.8s ease-in;
+}
+
+.kreski {
+    display:flex;
+    height: 5px;
+}
+
+.line1, .line2, .line3 {
+    text-align: center;
+    font-family: 'Brygada 1918', serif;
+    font-size: 0px;
+    width: 33%;
+    height: 3px;
+    transition: 0.6s ease-in;
+}
+
+.line1 {
+    background-color: darkgreen;
+    margin-right: 5px;
+}
+
+.line2 {
+    background-color: white;
+    margin-right: 5px;
+    border: 0.1px solid black;
+    transition-delay: 0.2s;
+}
+
+.line3 {
+    background-color: red;
+    transition-delay: 0.4s;
+}
+
+.logo_title:hover .line1, .logo_title:hover .line2, .logo_title:hover .line3 {
+    height: 55px;
+    font-size: 3rem;
+}
+
+.social {
+    position: absolute;
+    right: 0.1rem;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    
+
+    & p {
+        transform: scale(1);
+        transition: 200ms;     
+        margin: 1rem 0px;   
+
+        &:hover {
+            transform: scale(1.5);
+        }
+    }
+
+    & a {
+        font-size: 2rem;
+        color: green;
+        line-height: 1.8rem;
+        transition: 200ms;
+
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+.fa-facebook, .fa-github, .fa-instagram {
+    position: relative;
+    
+    &::after {
+        position: absolute;
+        right: 110%;
+        bottom: 50%;
+        font-size: 0.6rem;
+        color: black;
+        font-weight: bold;
+        background-color:white;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 2px 1px;
+        opacity: 0;
+        transition: opacity 200ms;
+        display: none;
+    }
+
+    &:hover::after {
+        opacity: 1;
+        display: block;
+    }
+}
+
+.fa-facebook::after {
+    content: 'Facebook';
+}
+.fa-github::after {
+    content: 'GitHub';
+}
+.fa-instagram::after {
+    content: 'Instagram';
+}

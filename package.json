@@ -1,0 +1,16 @@
+{
+  "name": "qanode",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "hbs": "^4.2.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
