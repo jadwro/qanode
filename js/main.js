@@ -1,5 +1,3 @@
-console.log("main.js");
-
 $('.menu-item.item2').on('mouseenter', function(){
     $('.submenu-item2').slideToggle(300);
 })
@@ -40,7 +38,7 @@ function adresURL(param) {
     return new URL(window.location.href).searchParams.get(param);
 }
 
-//FIREBASE START
+// FIREBASE START
 
 var db = firebase.firestore();
 
@@ -59,9 +57,21 @@ let wpisDelID;
 
 function getWpisy(wpis,i) {
     dzial = wpis.data().dzial;
+    if(dzial == "Ogólne skróty IT") {
+        dzialLink = '<a href="?dzial=1" class="dzialLink">' + dzial + '</a>';
+    }
+    if(dzial == "Pojęcia z IT") {
+        dzialLink = '<a href="?dzial=2" class="dzialLink">' + dzial + '</a>';
+    }
+    if(dzial == "Ogólne skróty N.G") {
+        dzialLink = '<a href="?dzial=3" class="dzialLink">' + dzial + '</a>';
+    }
+    if(dzial == "Różności") {
+        dzialLink = '<a href="?dzial=4" class="dzialLink">' + dzial + '</a>';
+    }
     autor = wpis.data().autor;
     if(autor) {
-         autor = "<br/>(by <span class='sl-autor'>" + autor +"</span>)";
+         autor = "<br/><span class='sl-autor'>(by <span>" + autor +"</span>)</span>";
     } else {
         autor = '';
     }
@@ -77,7 +87,7 @@ function getWpisy(wpis,i) {
                 <i class="fas fa-trash-alt"></i>
             </div>
         </div>
-        <p class="sl-dzial">Dział: ${ dzial }</p>
+        <p class="sl-dzial">Dział: ${ dzialLink }</p>
         <p class="sl-tresc">${ wpis.data().tresc } ${autor}</p>
     </div>
     `

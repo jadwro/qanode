@@ -239,7 +239,6 @@ body {
 }
 
 .slownik {
-  overflow: hidden;
   padding: 0.6rem;
   width: 100%;
   margin: 0 auto;
@@ -411,8 +410,12 @@ body {
 }
 
 .sl-autor {
-  font-weight: bold;
   color: #5c5c5c;
+  font-size: 0.9rem;
+}
+
+.sl-autor span {
+  font-weight: bold;
 }
 
 .slownik-karta {
@@ -421,11 +424,28 @@ body {
   border-radius: 15px;
   -webkit-box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.75);
           box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+  -webkit-transition: -webkit-transform 90ms linear;
+  transition: -webkit-transform 90ms linear;
+  transition: transform 90ms linear;
+  transition: transform 90ms linear, -webkit-transform 90ms linear;
+}
+
+.slownik-karta:hover {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+  -webkit-box-shadow: -1px 1px 20px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: -1px 1px 20px 0px rgba(0, 0, 0, 0.75);
+  background-color: #f9f9f9;
 }
 
 .slownik-karta .sl-dzial {
   font-size: 0.9rem;
   margin-bottom: 0.6rem;
+}
+
+.slownik-karta .sl-dzial a {
+  text-decoration: none;
+  color: #5c5c5c;
 }
 
 .slownik-karta .sl-tresc {
@@ -482,6 +502,7 @@ body {
   text-align: center;
   -webkit-box-shadow: 0px 0px 20px white;
           box-shadow: 0px 0px 20px white;
+  border-radius: 15px;
 }
 
 .slownik-dodaj input, .slownik-dodaj textarea, .slownik-dodaj select, .slownik-edytuj input, .slownik-edytuj textarea, .slownik-edytuj select {
