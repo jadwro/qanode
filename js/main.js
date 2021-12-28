@@ -1,10 +1,3 @@
-$('.menu-item.item2').on('mouseenter', function(){
-    $('.submenu-item2').slideToggle(300);
-})
-$('.menu-item.item2').on('mouseleave', function(){
-    $('.submenu-item2').slideToggle(300);
-})
-
 const strzalki = document.querySelector('.arrow');
 const menu = document.querySelector('.side-menu');
 
@@ -55,20 +48,26 @@ const btnYes = document.querySelector('.btnYes');
 let wpisID;
 let wpisDelID;
 
-function getWpisy(wpis,i) {
-    dzial = wpis.data().dzial;
+function dzialy(dzial) {
     if(dzial == "Ogólne skróty IT") {
-        dzialLink = '<a href="?dzial=1" class="dzialLink">' + dzial + '</a>';
+        return dzialLink = '<a href="?dzial=1" class="dzialLink">' + dzial + '</a>';
     }
     if(dzial == "Pojęcia z IT") {
-        dzialLink = '<a href="?dzial=2" class="dzialLink">' + dzial + '</a>';
+        return dzialLink = '<a href="?dzial=2" class="dzialLink">' + dzial + '</a>';
     }
     if(dzial == "Ogólne skróty N.G") {
-        dzialLink = '<a href="?dzial=3" class="dzialLink">' + dzial + '</a>';
+        return dzialLink = '<a href="?dzial=3" class="dzialLink">' + dzial + '</a>';
     }
     if(dzial == "Różności") {
-        dzialLink = '<a href="?dzial=4" class="dzialLink">' + dzial + '</a>';
+        return dzialLink = '<a href="?dzial=4" class="dzialLink">' + dzial + '</a>';
     }
+}
+istqb = false;
+function getWpisy(wpis,i) {
+    if(istqb) return;
+    dzial = wpis.data().dzial;    
+    dzialy(dzial);
+
     autor = wpis.data().autor;
     if(autor) {
          autor = "<br/><span class='sl-autor'>(by <span>" + autor +"</span>)</span>";
@@ -91,8 +90,9 @@ function getWpisy(wpis,i) {
         <p class="sl-tresc">${ wpis.data().tresc } ${autor}</p>
     </div>
     `
-    
+   
     kartaEl.insertAdjacentHTML('beforeend', karta);
+    
 
     const deleteIcon = document.querySelector(`[data-id="${ wpis.id }"] .fa-trash-alt`);
     

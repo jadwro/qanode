@@ -570,6 +570,54 @@ body {
           box-shadow: 0px 0px 20px white;
 }
 
+.quiz {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.6rem;
+  width: 100%;
+  margin: 5rem auto;
+  margin-top: 1rem;
+  color: #5c5c5c;
+  background-color: #fffffa;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.ukryj {
+  display: none;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.pytanie {
+  width: 50%;
+}
+
+.pyt-tresc {
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.pyt-form {
+  display: block;
+}
+
+.quizbtn-next {
+  padding: 1rem;
+  width: 150px;
+  cursor: pointer;
+}
+
 footer {
   margin: 100px;
   height: 100px;

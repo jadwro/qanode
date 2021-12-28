@@ -1,4 +1,5 @@
 const express = require('express');
+
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -12,8 +13,8 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-app.get('/podstrona', function(req, res) {
-    res.send("to jest podstrona");
+app.get('/istqb', function(req, res) {
+    res.render('istqb');
 });
 
 app.listen(port);
