@@ -1,189 +1,333 @@
 let istqb = true;
 
-const pytanie = [
-    {
-        id: 1,
-        tresc: "Które z poniższych stwierdzeń NAJLEPIEJ opisuje podział zadań pomiędzy kierownika testów a testera?",
-        odp1: 
-        {
-            tresc: "Kierownik testów planuje i nadzoruje czynności testowe, a tester automatyzuje testy.",
-            correct: true
-        },
-        odp2: 
-        {
-            tresc: "Kierownik testów planuje i organizuje czynności testowe oraz specyfikuje przypadki testowe, a tester ustala priorytety i wykonuje testy.",
-            correct: false
-        },
-        odp3: 
-        {
-            tresc: "Kierownik testów planuje, monitoruje i nadzoruje czynności testowe, a tester projektuje testy i podejmuje decyzje o wdrożeniu testowanego obiektu.",
-            correct: false
-        },
-        odp4: 
-        {
-            tresc: "Kierownik testów planuje czynności testowe i wybiera standardy, których należy przestrzegać, a tester wybiera stosowane narzędzia i sposób ich użycia.",
-            correct: false
-        },
-        right: 1,
-        bylo: false
-    },
-    {
-        id: 2,
-        tresc: "Które z poniższych stwierdzeń porównujących testowanie modułowe z testowaniem systemowym jest PRAWDZIWE?",
-        odp1: 
-        {
-            tresc: "Testowanie modułowe służy do weryfikowania funkcjonalności modułów oprogramowania, obiektów programów i klas, które można przetestować oddzielnie, natomiast testowanie systemowe pozwala zweryfikować interfejsy między modułami oraz interakcje między poszczególnymi częściami systemu.",
-            correct: false
-        },
-        odp2: 
-        {
-            tresc: "Przypadki testowe do testowania modułowego tworzy się zwykle na podstawie specyfikacji modułów, specyfikacji projektowych lub modeli danych, natomiast przypadki testowe do testowania systemowego wyprowadza się zwykle ze specyfikacji wymagań, specyfikacji funkcjonalnych lub przypadków użycia.",
-            correct: true
-        },
-        odp3: 
-        {
-            tresc: "Testowanie modułowe skupia się wyłącznie na charakterystykach funkcjonalnych, natomiast testowanie systemowe skupia się na charakterystykach funkcjonalnych i niefunkcjonalnych.",
-            correct: false
-        },
-        odp4: 
-        {
-            tresc: "Za testowanie modułowe odpowiadają testerzy, natomiast za testowanie systemowe zwykle odpowiadają użytkownicy systemu.",
-            correct: false
-        },
-        right: 2,
-        bylo: false
-    },
-    {
-        id: 3,
-        tresc: "Która z poniższych odpowiedzi NAJLEPIEJ opisuje technikę zgadywania błędów?",
-        odp1: 
-        {
-            tresc: "Zgadywanie błędów polega na wykorzystaniu własnego doświadczenia w wytwarzaniu oprogramowania i wiedzy na temat pomyłek, które samemu popełniłoby się podczas pracy na stanowisku programisty.",
-            correct: false
-        },
-        odp2: 
-        {
-            tresc: "Zgadywanie błędów wymaga szybkiego powielenia zadania związanego z wytwarzaniem oprogramowania w celu zidentyfikowania pomyłek, jakie mógłby popełnić programista.",
-            correct: false
-        },
-        odp3: 
-        {
-            tresc: "Zgadywanie błędów polega na wykorzystaniu wiedzy i doświadczenia w zakresie dotychczas wykrytych defektów oraz typowych pomyłek popełnianych przez programistów.",
-            correct: true
-        },
-        odp4: 
-        {
-            tresc: "Zgadywanie błędów wymaga wyobrażenia sobie, że jest się użytkownikiem przedmiotu testów, i zgadywania, jakie pomyłki mógłby popełnić korzystający z niego użytkownik.",
-            correct: false
-        },
-        right: 3,
-        bylo: false
-    },
-    {
-        id: 4,
-        tresc: "Która z poniższych odpowiedzi zawiera POPRAWNE dopasowanie ról i obowiązków związanych z przeglądem formalnym?",
-        odp1: 
-        {
-            tresc: "Moderator — monitoruje na bieżąco opłacalność.",
-            correct: false
-        },
-        odp2: 
-        {
-            tresc: "Lider przeglądu — dba o sprawny przebieg spotkań związanych z przeglądem.",
-            correct: false
-        },
-        odp3: 
-        {
-            tresc: "Kierownik — podejmuje decyzję o przeprowadzeniu przeglądu.",
-            correct: true
-        },
-        odp4: 
-        {
-            tresc: "Protokolant — usuwa defekty w produkcie pracy będącym przedmiotem przeglądu.",
-            correct: false
-        },
-        right: 3,
-        bylo: false
-    }
-]
+let licznikPyt = 0;
+let savedAns = [];
+let odp = false;
 
+let tempBylo = false;
 
-var goodAns = 0;
-var badAns = 0;
-
-function wyswPyt(nrPyt) {
+function wyswPyt(nrPyt, licz=true, start=false, chked=0) {
     if(koniec) {
-        showResult(this.goodAns, this.badAns);
+        showResult();
         return;
     }
 
-    console.log("nr pytania", nrPyt);
+    document.querySelector('.fa-sync-alt').classList.remove('ukryj');
 
-    const odp = document.getElementsByName('pytOdp');
+    
+    id = pytania[nrPyt].id;
+    const tempAktPyt = pytania.find((item) => item.id == id);
+    let currQ, nextBtn;
+    
+    if(licz) licznikPyt++;
 
-    // const bbb = () => {
-    //     for(i=0; i<3; i++) { 
-    //         var aba = "<input type='radio' id='quiz-a' name='pytOdp' value='1' checked>" 
-    //         return aba;
-    //     }
-    // }
-        
+    let prevBtn = "";    
+    if(licznikPyt == 1) {
+        prevBtn = '<button class="quizbtn-prev ukryj">Poprzednie</button>';
+    } else {
+        prevBtn = '<button class="quizbtn-prev">Poprzednie</button>';
+    }    
+    if(licznikPyt == limitPyt) {
+        nextBtn = '<button class="quizbtn-next">Zobacz wyniki</button>';
+    } else {
+        nextBtn = '<button class="quizbtn-next">Następne</button>';
+    }
+    
+    if(tempBylo) {
+        currQ = savedAns.find((item) => parseInt(item.pytID) === parseInt(id));
+        chked = currQ.odp;
+        odp = currQ.odp;
+    } else {
+        odp = false;
+        currQ = false;
+    }
+
+
+    let ansList = "";
+    let checked = "";
+    const showAnsList = () => {
+        for(i = 0; i < pytania[nrPyt].answers.length; i++) {                    
+            (odp == i && odp !== false) ? checked = "checked" : checked = "";
+            
+            ansList += `
+                <label for="quiz-${i}">
+                    <div class="odp odp${i}">
+                        <input type="radio" id="quiz-${i}" name="pytOdp" value="${i}" ${checked}>
+                        ${ pytania[nrPyt].answers[i][0] }
+                    </div>
+                </label>
+            `        
+        }
+        return ansList;
+    }        
     const trescDiv = `
-        <div class="pyt-tresc">
-            ${ pytanie[nrPyt].tresc }
+        <div class="pyt-tresc">  
+            <span>Pytanie ${licznikPyt} / ${limitPyt}</span>
+            <br/><br/>
+            ${ pytania[nrPyt].tresc }
         </div>                    
         <div class="pyt-odp">
-        <form class="pyt-form">
-            <input type="radio" id="quiz-a" name="pytOdp" value="1" checked>
-            <label for="quiz-a">${ pytanie[nrPyt].odp1.tresc }</label>
-            <br/><br/>
-            <input type="radio" id="quiz-b" name="pytOdp" value="2">
-            <label for="quiz-b">${ pytanie[nrPyt].odp2.tresc }</label>
-            <br/><br/>
-            <input type="radio" id="quiz-c" name="pytOdp" value="3">
-            <label for="quiz-c">${ pytanie[nrPyt].odp3.tresc }</label>
-            <br/><br/>
-            <input type="radio" id="quiz-d" name="pytOdp" value="4">
-            <label for="quiz-d">${ pytanie[nrPyt].odp4.tresc }</label>
-            <br/><br/>
-            <button class="quizbtn-next">Dalej</button>
-        </form>
+            <form class="pyt-form">
+                ${ showAnsList() }
+                <div class="quiz-btns">
+                    <div class="noAnswer"">Chyba by wypadało zaznaczyć jakąś odpowiedź</div>
+                    ${prevBtn} <button class="quizbtn-show">Sprawdź odpowiedź</button> ${nextBtn}
+                </div>
+            </form>
+            
         </div>
     `
-    document.querySelector('.pytanie').innerHTML = trescDiv;
+    document.querySelector('.pytanie').innerHTML = '';
+    document.querySelector('.pytanie').insertAdjacentHTML('afterbegin', trescDiv);
+
+    const btnNext = document.querySelector('.quizbtn-next');
+    const btnPrev = document.querySelector('.quizbtn-prev');
+    const btnShow = document.querySelector('.quizbtn-show');
+    const noAnswer = document.querySelector('.noAnswer');
+    const odpDiv = document.querySelectorAll('.odp');
     
-    pytanie[nrPyt].bylo = true;
-
-    const btnQuiz = document.querySelector('.quizbtn-next');
-    
-    const ileOdp = odp.length;
-
-
-    btnQuiz.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        for(let i = 0; i < ileOdp; i++) {
-            if(odp[i].checked) {
-                if(odp[i].value == pytanie[nrPyt].right) {
-                    goodAns++;
-                } else {
-                    badAns++;
-                }
-                break;
-            }
-        }
-        wyswPyt(losowePyt());
+    document.querySelectorAll('input[name="pytOdp"').forEach((radio) => {
+        radio.addEventListener('change', (e) => {
+            odp = parseInt(e.target.value);     
+            odpDiv.forEach(item => {
+                item.style.outline = "none";
+                noAnswer.style.display = "none";
+            })
+        });
     });
+
+    console.log("answ", savedAns);   
+    
+    pytania[nrPyt].bylo = true;
+
+    console.log("odpowiedź zapamiętana: ", currQ.odp);
+
+    btnNext.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(odp === false) {
+            noAnswer.style.display = "block";
+            odpDiv.forEach(item => {
+                item.style.outline = "1px solid red";
+            })            
+        } else {     
+            sprOdp(nrPyt, odp, id);
+            next(odp);
+        }
+        
+    });
+
+    if(btnPrev) {
+        btnPrev.addEventListener('click', (e) => {
+            e.preventDefault();
+                        
+            sprOdp(nrPyt, odp, id);
+            prev(odp);
+        });
+    }
+
+    btnShow.addEventListener('click', (e) => {
+        e.preventDefault();
+                    
+        showAnswer(id, odp);
+    });
+
+    console.log(byly);
+
+    consoleLogPoWysw(tempBylo, id, tempAktPyt, odp)
 }
 
+function showAnswer(id, odp) {
+    const question = pytania.find((item) => parseInt(item.id) === parseInt(id));
+    const goodAns = question.right;
 
-let byly = [];
+    console.log("good Ans: ", goodAns)
+    
+    const correct = document.querySelector(`.odp${goodAns}`);
+    const selected = document.querySelector(`.odp${odp}`);
+    const allAns = document.querySelectorAll('.odp');
+
+
+
+    if(odp != goodAns && odp !== false) {
+        allAns.forEach(item => {
+            item.classList.remove('wrongAns');
+        });
+        selected.classList.add('wrongAns');
+    }
+
+    if(odp == goodAns) {
+        allAns.forEach(item => {
+            item.classList.remove('wrongAns');
+        });
+    }
+    correct.classList.add('goodAns');
+}
+
+function consoleLogPoWysw(tempBylo, id, tempAktPyt, odp) {
+    console.log("tempBylo: ", tempBylo)
+    console.log("ID: ", id);
+    // console.log("tempAktPyt: ", tempAktPyt);
+    console.log("odp poprzedniego pyt: ", odp);
+    console.log("savedAns: ", savedAns);
+}
+
+function sprOdp(nrPyt, odp, id) {
+    if(savedAns.length === 0) {        
+        var byloID = nrPyt;
+    }
+    let odpow = [];
+    for(i in savedAns) {
+        if(nrPyt == savedAns[i].pyt) {
+            var byloID = i;
+        }
+    }
+                       
+    odpow = {
+        pyt: nrPyt,
+        pytID: id,
+        odp: odp
+    }
+    
+    if(!tempBylo) {
+        savedAns.push(odpow);
+    } else {
+        savedAns[byloID].odp = odp;
+    }
+}
+
+function next(chked) {      
+    if(licznikPyt === byly.length) { 
+        tempBylo = false;
+        wyswPyt(losowePyt(limitPyt),true,false, chked);
+    } else {    // PYTANIE BYŁO
+        tempBylo = true;
+        wyswPyt(byly[licznikPyt],true,false, chked);
+    }
+    
+}
+
+function prev(chked) {          
+    licznikPyt--; 
+    let prev = byly[licznikPyt-1];
+
+    tempBylo = true;
+    wyswPyt(prev,false,false, chked);
+}
+
+function showResult() {
+    let goodArr = [];
+    let badArr = [];
+    let pyt;
+    for(j in savedAns) {
+        pyt = pytania.find((item) => item.id == savedAns[j].pytID);
+        if(savedAns[j].odp == pyt.right) {           
+            goodArr.push(savedAns[j].pytID);
+        } else {
+            badArr.push(savedAns[j].pytID);
+        }
+    }
+
+    console.log("good id", goodArr);
+    console.log("bad id", badArr);
+
+    trescWrong = "";
+    var qu = "";
+    let checkedAns = "";
+    const zleID = () => {
+        if(badArr.length === 0) return "";
+
+        trescWrong += `Poniżej Twoje błędy (${badArr.length}) wraz z poprawnymi odpowiedziami.<br/><br/>`;
+        for (i in badArr) {
+            qu = pytania.find((item) => item.id == badArr[i]);
+            checkedAns = savedAns.find((item) => item.pytID == qu.id);            
+            
+            trescWrong += `                
+                <div class="odp-sum-wrap">
+                    <h3>${qu.tresc} (ID: ${qu.id})</h3>
+                    <br/>
+            `
+            
+            for(i = 0; i < qu.answers.length; i++) {
+                (qu.right == i) ? goodClass = "goodAns" : goodClass = "";
+                (checkedAns.odp == i) ? wrongClass = "wrongAns" : wrongClass = "";
+                trescWrong += `                    
+                    <div class="odp-sum ${goodClass}${wrongClass}">                        
+                        ${ qu.answers[i][0] }
+                    </div>                    
+                `
+            } 
+            trescWrong += `</div>`;
+        }
+        trescWrong += `
+        <div class="btn-again">
+            <button onClick="window.location.reload()">Jeszcze raz</button>
+        </div>`;
+
+        return trescWrong;
+    }
+
+    trescCorr = "<h1>Dobre odpowiedzi:</h1><br/>";  
+    const dobreID = () => {
+        if(goodArr.length === 0) return "";
+
+        for (i in goodArr) {
+            qu = pytania.find((item) => item.id == goodArr[i]);          
+            
+            trescCorr += `
+                <div class="odp-sum-wrap">
+                    <h3>${qu.tresc} (ID: ${qu.id})</h3>
+                    <br/>
+            `
+            
+            for(i = 0; i < qu.answers.length; i++) {
+                (qu.right == i) ? goodClass = "goodAns" : goodClass = "";
+                trescCorr += `                    
+                    <div class="odp-sum ${goodClass}">                        
+                        ${ qu.answers[i][0] }
+                    </div>                    
+                `
+            } 
+            trescCorr += `</div>`;          
+        }
+        trescCorr += `
+        <div class="btn-again">
+            <button onClick="window.location.reload()">Jeszcze raz</button>
+        </div>`;
+        return trescCorr;
+    }    
+
+    
+
+    const p = pytania.find((item) => item.id == id);
+    const allQ = goodArr.length + badArr.length;
+    const procent = Math.round(goodArr.length / allQ * 100);
+    (procent >= 65) ? pass = "<span class='yes'>- zdałeś :)</span>" : pass = "<span class='no'>- nie zdałeś :(</span>"
+    
+    const trescDiv = `
+        <h1 class="h1-score">Twój wynik: ${goodArr.length} / ${allQ} (${procent}%) ${pass}</h1>
+        <br/>
+        
+        ${zleID()}
+        <br/>        
+        ${dobreID()}
+
+    `
+
+    document.querySelector('.pytanie').innerHTML = '';
+    document.querySelector('.pytanie').insertAdjacentHTML('afterbegin', trescDiv);
+    
+    // window.alert("Dobrze: " + goodArr.length + "\nŹle: " + badArr.length);
+    // window.location.reload();
+}
+
 let tablicaPyt = [];
+let byly = [];
 let koniec = false;
+let limitPyt;
 
-function losowePyt() {
-    if(tablicaPyt.length < pytanie.length) {
-        for(i=0; i < pytanie.length; i++) {
+function losowePyt(ilePyt = pytania.length) {
+    if(tablicaPyt.length < pytania.length) {
+        for(i=0; i < pytania.length; i++) {
             tablicaPyt.push(i);
         }        
     }
@@ -192,7 +336,7 @@ function losowePyt() {
 
     let nrPyt = tabPyt[Math.floor(Math.random()*tabPyt.length)];
     
-    if(nrPyt === undefined) {
+    if(nrPyt === undefined || licznikPyt >= ilePyt) {
         koniec = true;
     } 
     
@@ -201,11 +345,38 @@ function losowePyt() {
     return nrPyt;    
 }
 
-function showResult(goodAns, badAns) {
-    window.alert("Dobrze: " + goodAns + " Źle: " + badAns);
+let start = true;
+function init() {   
+    const trescDiv = `
+    <div class="ile-pyt">
+    <form class="ilepyt-form">
+    <label for="ilepyt">Ile chcesz pytań?</label>
+    <br/>
+    <input type="number" id="ilepyt" placeholder="Pytań w bazie: ${ pytania.length }">
+    <br/>
+    <button class="quizbtn-next btn-ile">Start</button>
+    </form>
+    `
+    document.querySelector('.pytanie').innerHTML = trescDiv;
+    
+    const btn = document.querySelector('.btn-ile');
+    const ileForm = document.querySelector('.ilepyt-form').ilepyt;
+    
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        start = true;
+        licz = true;
+        ileForm.value == "" || ileForm.value <= 0  ? limitPyt = pytania.length : limitPyt = ileForm.value;
+        
+        wyswPyt(losowePyt(limitPyt), licz, start);
+    });
 }
 
-if(!koniec) {
-    wyswPyt(losowePyt());
+if(start) {
+    document.querySelector('.fa-sync-alt').classList.add('ukryj');
+    init();
+} else if(!koniec) {    
+    wyswPyt(losowePyt(limitPyt));  
 }
 

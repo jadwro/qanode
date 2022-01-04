@@ -13,6 +13,10 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+app.get('/slownik', function(req, res) {
+    res.render('index');
+});
+
 app.get('/istqb', function(req, res) {
     res.render('istqb');
 });

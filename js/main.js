@@ -55,7 +55,7 @@ function dzialy(dzial) {
     if(dzial == "Pojęcia z IT") {
         return dzialLink = '<a href="?dzial=2" class="dzialLink">' + dzial + '</a>';
     }
-    if(dzial == "Ogólne skróty N.G") {
+    if(dzial == "Ogólne skróty N") {
         return dzialLink = '<a href="?dzial=3" class="dzialLink">' + dzial + '</a>';
     }
     if(dzial == "Różności") {

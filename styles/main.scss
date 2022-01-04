@@ -189,6 +189,7 @@ body {
   padding: 0.6rem;
   width: $contentWidth;
   margin: 0 auto;
+  margin-bottom: 2rem;
   color: $textColor;
   background-color: #fffffa;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -226,11 +227,12 @@ body {
     position: relative;
     
     &::after {
-        content: 'Dodaj wpis';
+        content: "Dodaj wpis";
         width: 50px;
         position: absolute;
         right: 110%;
         bottom: 50%;
+        text-align: center;
         font-size: 0.6rem;
         color: black;
         font-weight: bold;
@@ -238,13 +240,13 @@ body {
         border: 1px solid black;
         border-radius: 5px;
         padding: 2px 1px;
-        opacity: 0;
-        transition: 2000ms;
-        display: none;
+        transition: 300ms;
+        transition: transform 200ms;
+        transform: scale(0);
     }
 
     &:hover::after {
-        display: block;
+        transform: scale(1);
     }
 }
 
@@ -479,9 +481,60 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.ukryj {
-    display: none;
-    transform: scale(0);
+.quiz-nagl {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;    
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 1px 1px 2px black;
+        color: #5a5a5a;
+    }
+
+    i {
+        position: absolute;
+        right: 1.2rem;
+        font-size: 2.2rem;
+        transition: 300ms;
+
+        &:hover {
+            color: green;
+            cursor: pointer;
+            transform: scale(1.5);
+        }
+    }
+}
+
+.fa-sync-alt {
+    position: relative;
+    
+    &::after {
+        content: "Zacznij od nowa";
+        width: 50px;
+        position: absolute;
+        right: 110%;
+        bottom: 50%;
+        text-align: center;
+        font-size: 0.6rem;
+        color: black;
+        font-weight: bold;
+        background-color:white;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 2px 1px;
+        transition: 300ms;
+        transition: transform 200ms;
+        transform: scale(0);
+    }
+
+    &:hover::after {
+        transform: scale(1);
+    }
 }
 
 .pytanie {
@@ -489,20 +542,168 @@ body {
 }
 
 .pyt-tresc {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.7rem;
     margin-bottom: 0.7rem;
+    text-align: justify;
+
+
+    span {
+        font-size: 1rem;
+    }
 }
 
-.pyt-form {
-    display: block;
+input[type="radio"]:checked+label {
+    box-shadow: 0 0 0 1px orange;
+    background-color: green;
+
+    .selected {
+        font-size: 5rem;
+    }
 }
 
-.quizbtn-next {
+.odp {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ecebeb;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 200ms;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: justify;
+
+    &:hover {
+        outline: 1px solid green;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.507);       
+    }
+
+    label {
+        margin-left: 1rem;
+        text-align: justify;
+        cursor: pointer;
+    }
+    input {
+        margin-right: 1rem;
+    }
+}
+
+.odp-sum-wrap {
+    background-color: #f7f7f7;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: -1px 1px 10px 0px rgba(0,0,0,0.75);
+    transition: transform 90ms linear;
+    margin-bottom: 2.5rem;
+}
+
+.odp-sum {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 15px;
+    transition: 100ms;
+}
+
+.h1-score {
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid silver;
+
+    .yes {
+        color: green;
+        font-size: 1.8rem;
+    }
+    .no {
+        color: red;
+        font-size: 1.8rem;
+    }
+}
+
+.quiz-btns {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    .noAnswer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: red;
+        display: none;
+    }
+
+}
+
+.quizbtn-next, .quizbtn-prev, .quizbtn-show, .quizbtn, .quizbtn-again {
     padding: 1rem;
     width: 150px;
+    margin-top: 1.5rem;
     cursor: pointer;
 }
 
+.quizbtn-show {
+    width: 250px;
+}
+
+#ilepyt {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    width: 200px;
+}
+
+.btn-ile {
+    width: 200px;
+}
+
+.goodAns {
+    background-color: green;
+    color: white;
+}
+
+.wrongAns {
+    background-color: red;
+    color: white;
+}
+
+.btn-again {
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: -1px 1px 10px 0px rgba(0,0,0,0.75);    
+    border-radius: 10px;    
+    transition: 500ms;
+    background-color: #f9f9f9;
+
+    &:hover {
+        transform: scale(1.1);
+        color: green;
+    }
+
+    button {
+        padding: 1rem;
+        width: 100%;
+        font-size: 1.8rem;
+        // font-weight: bold;
+        background: none;  
+        border: none;          
+        cursor: pointer;
+        letter-spacing: 0.2rem;
+        
+        &:hover {
+            color: green;
+        }
+    }
+}
+
+.ukryj {
+    // display: none;
+    transform: scale(0);
+}
 footer {
   margin: 100px;
   height: 100px;

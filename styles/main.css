@@ -242,6 +242,7 @@ body {
   padding: 0.6rem;
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 2rem;
   color: #5c5c5c;
   background-color: #fffffa;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -288,11 +289,12 @@ body {
 }
 
 .fa-plus-circle::after {
-  content: 'Dodaj wpis';
+  content: "Dodaj wpis";
   width: 50px;
   position: absolute;
   right: 110%;
   bottom: 50%;
+  text-align: center;
   font-size: 0.6rem;
   color: black;
   font-weight: bold;
@@ -300,14 +302,19 @@ body {
   border: 1px solid black;
   border-radius: 5px;
   padding: 2px 1px;
-  opacity: 0;
-  -webkit-transition: 2000ms;
-  transition: 2000ms;
-  display: none;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  -webkit-transition: -webkit-transform 200ms;
+  transition: -webkit-transform 200ms;
+  transition: transform 200ms;
+  transition: transform 200ms, -webkit-transform 200ms;
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 
 .fa-plus-circle:hover::after {
-  display: block;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .slownik-siatka {
@@ -593,10 +600,74 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.ukryj {
-  display: none;
+.quiz-nagl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+
+.quiz-nagl h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px black;
+  color: #5a5a5a;
+}
+
+.quiz-nagl i {
+  position: absolute;
+  right: 1.2rem;
+  font-size: 2.2rem;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.quiz-nagl i:hover {
+  color: green;
+  cursor: pointer;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.fa-sync-alt {
+  position: relative;
+}
+
+.fa-sync-alt::after {
+  content: "Zacznij od nowa";
+  width: 50px;
+  position: absolute;
+  right: 110%;
+  bottom: 50%;
+  text-align: center;
+  font-size: 0.6rem;
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px 1px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  -webkit-transition: -webkit-transform 200ms;
+  transition: -webkit-transform 200ms;
+  transition: transform 200ms;
+  transition: transform 200ms, -webkit-transform 200ms;
   -webkit-transform: scale(0);
           transform: scale(0);
+}
+
+.fa-sync-alt:hover::after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .pytanie {
@@ -604,18 +675,189 @@ body {
 }
 
 .pyt-tresc {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  line-height: 1.7rem;
   margin-bottom: 0.7rem;
+  text-align: justify;
 }
 
-.pyt-form {
-  display: block;
+.pyt-tresc span {
+  font-size: 1rem;
 }
 
-.quizbtn-next {
+input[type="radio"]:checked + label {
+  -webkit-box-shadow: 0 0 0 1px orange;
+          box-shadow: 0 0 0 1px orange;
+  background-color: green;
+}
+
+input[type="radio"]:checked + label .selected {
+  font-size: 5rem;
+}
+
+.odp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ecebeb;
+  border-radius: 15px;
+  cursor: pointer;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-align: justify;
+}
+
+.odp:hover {
+  outline: 1px solid green;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.507);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.507);
+}
+
+.odp label {
+  margin-left: 1rem;
+  text-align: justify;
+  cursor: pointer;
+}
+
+.odp input {
+  margin-right: 1rem;
+}
+
+.odp-sum-wrap {
+  background-color: #f7f7f7;
+  padding: 1rem;
+  border-radius: 15px;
+  -webkit-box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+  -webkit-transition: -webkit-transform 90ms linear;
+  transition: -webkit-transform 90ms linear;
+  transition: transform 90ms linear;
+  transition: transform 90ms linear, -webkit-transform 90ms linear;
+  margin-bottom: 2.5rem;
+}
+
+.odp-sum {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 15px;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+}
+
+.h1-score {
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid silver;
+}
+
+.h1-score .yes {
+  color: green;
+  font-size: 1.8rem;
+}
+
+.h1-score .no {
+  color: red;
+  font-size: 1.8rem;
+}
+
+.quiz-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+.quiz-btns .noAnswer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+  display: none;
+}
+
+.quizbtn-next, .quizbtn-prev, .quizbtn-show, .quizbtn, .quizbtn-again {
   padding: 1rem;
   width: 150px;
+  margin-top: 1.5rem;
   cursor: pointer;
+}
+
+.quizbtn-show {
+  width: 250px;
+}
+
+#ilepyt {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  width: 200px;
+}
+
+.btn-ile {
+  width: 200px;
+}
+
+.goodAns {
+  background-color: green;
+  color: white;
+}
+
+.wrongAns {
+  background-color: red;
+  color: white;
+}
+
+.btn-again {
+  text-align: center;
+  margin-bottom: 2rem;
+  -webkit-box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  background-color: #f9f9f9;
+}
+
+.btn-again:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: green;
+}
+
+.btn-again button {
+  padding: 1rem;
+  width: 100%;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.2rem;
+}
+
+.btn-again button:hover {
+  color: green;
+}
+
+.ukryj {
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 
 footer {

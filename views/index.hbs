@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QA Team</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
             <div class="naglowek">
                 <div class="logo_title">
                     <div class="logo_img">
-                        <a href='/'><img src="img/itm.svg" alt="Logo Śląska" class="logo_slask"></a>
+                        {{!-- <img src="img/itm.svg" alt="Logo Śląska" class="logo_slask"> --}}
                     </div>
                     <div class="tytuldiv">
                         <h2 class="tytul"></h2>
@@ -51,12 +51,19 @@
         <nav class="tag_menu">
             <div class="menu-container">
                 <div class="menu-item underline">
-                    <a href="#slownik" class="link_menu">
+                    <a href="./slownik" class="link_menu">
                         <div class="main-menu-title">
                             Słownik
                         </div>
                     </a>
                 </div>
+                <div class="menu-item underline">
+                    <a href="./istqb" class="link_menu">
+                        <div class="main-menu-title underline">
+                            ISTQB
+                        </div>
+                    </a>
+                </div>                
                 <div class="menu-item">
                     <a href="#2" class="link_menu">
                         <div class="main-menu-title">
@@ -75,13 +82,6 @@
                         </div>
                     </div>
                 </div>                
-                <div class="menu-item underline">
-                    <a href="#3" class="link_menu">
-                        <div class="main-menu-title underline">
-                            Menu 3
-                        </div>
-                    </a>
-                </div>
                 <div class="menu-item underline">
                     <a href="#4" class="link_menu">
                         <div class="main-menu-title underline">
@@ -109,7 +109,7 @@
                 </div>
                 <div class="photo item2">
                     <div class="img-container">
-                        <img src="../img/2.jpg" alt="1">
+                        <img src="img/2.jpg" alt="1">
                     </div>
                     <div class="photo-text item2">
                         <h2>Aplikacja Wew.</h2>
@@ -144,6 +144,13 @@
                     <h1>Słowniczek</h1>
                     <i class="fas fa-plus-circle"></i>
                 </div>
+                <!-- <div class="lista-dzialow">
+                    Sortuj wg działu: 
+                    <a href="?dzial=1">Ogólne skróty IT</a>,
+                    <a href="?dzial=2">Pojęcia z IT</a>,
+                    <a href="?dzial=3">Ogólne skróty N.G</a>,
+                    <a href="?dzial=4">Różności</a>
+                </div> -->
                 <div class="slownik-siatka">                   
                 </div>
                 <div class="popupAdd hideAdd">
@@ -197,6 +204,7 @@
                     </div>     
                 </div>
             </div>
+           
         </div>    
     </main>
 
