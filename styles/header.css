@@ -196,7 +196,7 @@
 }
 
 .fa-facebook::after {
-  content: 'Facebook';
+  content: 'Dark';
 }
 
 .fa-github::after {
@@ -204,6 +204,6 @@
 }
 
 .fa-instagram::after {
-  content: 'Instagram';
+  content: 'Light';
 }
 /*# sourceMappingURL=header.css.map */

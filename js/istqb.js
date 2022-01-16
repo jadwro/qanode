@@ -45,6 +45,7 @@ function wyswPyt(nrPyt, licz=true, start=false, chked=0) {
 
     let ansList = "";
     let checked = "";
+
     const showAnsList = () => {
         for(i = 0; i < pytania[nrPyt].answers.length; i++) {                    
             (odp == i && odp !== false) ? checked = "checked" : checked = "";
@@ -53,7 +54,12 @@ function wyswPyt(nrPyt, licz=true, start=false, chked=0) {
                 <label for="quiz-${i}">
                     <div class="odp odp${i}">
                         <input type="radio" id="quiz-${i}" name="pytOdp" value="${i}" ${checked}>
-                        ${ pytania[nrPyt].answers[i][0] }
+                        <div class="trescOdp">
+                            ${ pytania[nrPyt].answers[i].tresc } 
+                            <div class="trescOdpHint ukryj" data-hint="${ pytania[nrPyt].answers[i].hint }">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                        </div>
                     </div>
                 </label>
             `        
@@ -62,7 +68,7 @@ function wyswPyt(nrPyt, licz=true, start=false, chked=0) {
     }        
     const trescDiv = `
         <div class="pyt-tresc">  
-            <span>Pytanie ${licznikPyt} / ${limitPyt}</span>
+            <span>Pytanie ${licznikPyt} / ${limitPyt} (ID: ${id})</span>
             <br/><br/>
             ${ pytania[nrPyt].tresc }
         </div>                    
@@ -127,7 +133,7 @@ function wyswPyt(nrPyt, licz=true, start=false, chked=0) {
 
     btnShow.addEventListener('click', (e) => {
         e.preventDefault();
-                    
+        
         showAnswer(id, odp);
     });
 
@@ -145,8 +151,11 @@ function showAnswer(id, odp) {
     const correct = document.querySelector(`.odp${goodAns}`);
     const selected = document.querySelector(`.odp${odp}`);
     const allAns = document.querySelectorAll('.odp');
+    const trescOdpHint = document.querySelectorAll('.trescOdpHint');
 
-
+    trescOdpHint.forEach(item => {
+        item.classList.remove('ukryj');
+    });
 
     if(odp != goodAns && odp !== false) {
         allAns.forEach(item => {
@@ -252,8 +261,13 @@ function showResult() {
                 (checkedAns.odp == i) ? wrongClass = "wrongAns" : wrongClass = "";
                 trescWrong += `                    
                     <div class="odp-sum ${goodClass}${wrongClass}">                        
-                        ${ qu.answers[i][0] }
-                    </div>                    
+                        <div class="trescOdp">
+                            ${ qu.answers[i].tresc } 
+                            <div class="trescOdpHint" data-hint="${ qu.answers[i].hint }">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                        </div>
+                    </div>
                 `
             } 
             trescWrong += `</div>`;
@@ -283,8 +297,13 @@ function showResult() {
                 (qu.right == i) ? goodClass = "goodAns" : goodClass = "";
                 trescCorr += `                    
                     <div class="odp-sum ${goodClass}">                        
-                        ${ qu.answers[i][0] }
-                    </div>                    
+                        <div class="trescOdp">
+                            ${ qu.answers[i].tresc } 
+                        <div class="trescOdpHint" data-hint="${ qu.answers[i].hint }">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                    </div>   
+                </div>                       
                 `
             } 
             trescCorr += `</div>`;          
@@ -350,7 +369,7 @@ function init() {
     const trescDiv = `
     <div class="ile-pyt">
     <form class="ilepyt-form">
-    <label for="ilepyt">Ile chcesz pytań?</label>
+    <label for="ilepyt">Ile chcesz pytań? (domyślnie: 5)</label>
     <br/>
     <input type="number" id="ilepyt" placeholder="Pytań w bazie: ${ pytania.length }">
     <br/>
@@ -367,7 +386,7 @@ function init() {
 
         start = true;
         licz = true;
-        ileForm.value == "" || ileForm.value <= 0  ? limitPyt = pytania.length : limitPyt = ileForm.value;
+        ileForm.value == "" || ileForm.value <= 0  ? limitPyt = 5 : limitPyt = ileForm.value;
         
         wyswPyt(losowePyt(limitPyt), licz, start);
     });

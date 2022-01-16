@@ -31,7 +31,15 @@ function adresURL(param) {
     return new URL(window.location.href).searchParams.get(param);
 }
 
+document.querySelector('.fa-facebook').onclick = () => {
+    document.getElementById('lightStyle').href = "./styles/bartek.css";
+}
+document.querySelector('.fa-instagram').onclick = () => {
+    document.getElementById('lightStyle').href = "./styles/main.css";
+}
+
 // FIREBASE START
+
 
 var db = firebase.firestore();
 
@@ -224,4 +232,3 @@ btnNo.addEventListener('click', (e) => {
     e.preventDefault();
     popupConfirm.classList.toggle('hideConfirm');
 })
-
